@@ -64,3 +64,4 @@ A full-stack MERN application that allows users to upload documents (PDF/Text), 
 3. **Upload** a PDF or Text document on the Dashboard.
 4. **Click "Start Chatting"** and ask a question about the document content.
 5. Verify the answer is correct and check the **Recent Inquiries** on the Dashboard.
+# document-intelligence-hub
