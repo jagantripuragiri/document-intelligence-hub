@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* GitHub Primer-like Theme */
+@layer base {
+  :root {
+    /* GitHub Light Default */
+    --background: 0 0% 100%; /* #ffffff */
+    --foreground: 210 9% 16%; /* #24292f */
+    --card: 0 0% 100%;
+    --card-foreground: 210 9% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 9% 16%;
+    --primary: 134 61% 33%; /* #1f883d (Green) */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 96%; /* #f6f8fa */
+    --secondary-foreground: 210 9% 16%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 212 10% 43%; /* #57606a */
+    --accent: 210 20% 96%;
+    --accent-foreground: 210 9% 16%;
+    --destructive: 358 75% 59%; /* #cf222e */
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 18% 87%; /* #d0d7de */
+    --input: 210 18% 87%;
+    --ring: 212 92% 43%; /* #0969da (Blue focus ring) */
+    --radius: 0.375rem; /* 6px */
+  }
+
+  .dark {
+    /* GitHub Dark Dimmed */
+    --background: 216 28% 7%; /* #0d1117 */
+    --foreground: 214 13% 82%; /* #c9d1d9 */
+    --card: 216 28% 7%;
+    --card-foreground: 214 13% 82%;
+    --popover: 215 21% 11%; /* #161b22 */
+    --popover-foreground: 214 13% 82%;
+    --primary: 138 59% 33%; /* #238636 (Green) */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 21% 11%; /* #161b22 */
+    --secondary-foreground: 214 13% 82%;
+    --muted: 215 21% 11%;
+    --muted-foreground: 215 14% 54%; /* #8b949e */
+    --accent: 215 21% 11%;
+    --accent-foreground: 214 13% 82%;
+    --destructive: 347 77% 50%; /* #d03544 */
+    --destructive-foreground: 0 0% 100%;
+    --border: 213 13% 21%; /* #30363d */
+    --input: 213 13% 21%;
+    --ring: 212 100% 48%; /* #1f6feb */
+  }
+}
+
+@layer base {
+  html, body, #root {
+    @apply h-full w-full m-0 p-0 font-sans antialiased;
+  }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
