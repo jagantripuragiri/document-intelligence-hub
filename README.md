@@ -1,6 +1,7 @@
 # Document Intelligence and Knowledge Search Hub (DocuMind)
 
-A full-stack MERN application that allows users to upload documents (PDF/Text), automatically extracts content, and provides an AI-powered Q&A interface using Google Gemini.
+DocuMind is a full-stack MERN application that enables users to upload documents (PDF/Text), automatically extract their content, and interact with an AI-powered Q&A interface using Google Gemini. Users can ask questions about their uploaded documents and receive meaningful answers supported by relevant document references. This project was developed as a task for reaidy.io during my campus placement drive.
+
 
 ## Features
 - **Modern UI**: Built with React, Tailwind CSS, and Framer Motion for a premium feel.
@@ -32,7 +33,7 @@ A full-stack MERN application that allows users to upload documents (PDF/Text), 
    npm install
    ```
 3. Configure Environment Variables:
-   - Rename `.env.example` (or create `.env` if not present) and add your keys:
+   -  create `.env`  and add your keys:
      ```
      PORT=5000
      MONGO_URI=your_mongodb_connection_string
@@ -58,10 +59,12 @@ A full-stack MERN application that allows users to upload documents (PDF/Text), 
    npm run dev
    ```
 
-## Verification Steps
-1. Open the frontend URL (usually `http://localhost:5173`).
+##  Steps
+1. Open the frontend URL .
 2. **Sign Up** for a new account.
 3. **Upload** a PDF or Text document on the Dashboard.
 4. **Click "Start Chatting"** and ask a question about the document content.
 5. Verify the answer is correct and check the **Recent Inquiries** on the Dashboard.
-# document-intelligence-hub
+
+
+Developed by **Jagan Tripuragiri**
