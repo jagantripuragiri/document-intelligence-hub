@@ -57,7 +57,7 @@ const Login = () => {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="h-11 bg-gray-100 border-gray-300"
+                                className="h-11 bg-gray-100 border-gray-300 text-gray-900"
                             />
                         </div>
 
@@ -68,7 +68,7 @@ const Login = () => {
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="h-11 bg-gray-100 border-gray-300"
+                                className="h-11 bg-gray-100 border-gray-300 text-gray-900"
                             />
                         </div>
 
