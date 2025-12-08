@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
             setUser(JSON.parse(storedUser));
         }
         setLoading(false);
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const login = async (email, password) => {
         const { data } = await api.post('/auth/login', { email, password });

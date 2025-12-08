@@ -8,7 +8,7 @@ import { Input } from '../components/ui/input';
 import { Send, ArrowLeft, Bot, User as UserIcon, Sparkles } from 'lucide-react';
 
 const Chat = () => {
-    const { user } = useContext(AuthContext);
+    // const { user } = useContext(AuthContext); // Unused
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
@@ -34,13 +34,14 @@ const Chat = () => {
 
         try {
             const { data } = await api.post('/chat', { query: userMessage.content });
-            const aiMessage = { 
-                role: 'ai', 
-                content: data.answer, 
+            const aiMessage = {
+                role: 'ai',
+                content: data.answer,
             };
             setMessages(prev => [...prev, aiMessage]);
-        } catch (error) {
+        } catch (err) {
             setMessages(prev => [...prev, { role: 'ai', content: 'Sorry, I encountered an error while processing your request.' }]);
+            console.error("Chat error:", err);
         } finally {
             setLoading(false);
         }
@@ -49,7 +50,7 @@ const Chat = () => {
     return (
         <div className="flex flex-col h-screen bg-background text-foreground relative overflow-hidden bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-background to-background">
             {/* Background Pattern */}
-             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:24px_24px]" />
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:24px_24px]" />
 
             {/* Header */}
             <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/60 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
@@ -59,7 +60,7 @@ const Chat = () => {
                             <ArrowLeft className="h-5 w-5" />
                         </Button>
                         <div className="flex items-center space-x-2.5">
-                             <div className="bg-primary/10 p-1.5 rounded-lg">
+                            <div className="bg-primary/10 p-1.5 rounded-lg">
                                 <Sparkles className="h-4 w-4 text-primary" />
                             </div>
                             <div>
@@ -89,10 +90,10 @@ const Chat = () => {
                                 I can summarize documents, answer specific questions, or help you find critical information instantly.
                             </p>
                         </div>
-                        
+
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-lg">
                             {['Summarize document', 'Key takeaways', 'Explain specific terms', 'Find deadlines'].map((suggestion, i) => (
-                                <button 
+                                <button
                                     key={suggestion}
                                     onClick={() => setInput(suggestion)}
                                     className="text-sm p-4 rounded-xl border border-border/40 bg-card/40 hover:bg-primary/5 hover:border-primary/20 transition-all text-left text-muted-foreground hover:text-primary flex items-center justify-between group"
@@ -111,11 +112,10 @@ const Chat = () => {
                                 <div className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center mt-auto shadow-sm ${msg.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-card border border-border/50 text-foreground'}`}>
                                     {msg.role === 'user' ? <UserIcon className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
                                 </div>
-                                <div className={`group relative p-4 rounded-2xl text-sm md:text-base leading-relaxed shadow-sm ${
-                                    msg.role === 'user' 
-                                        ? 'bg-primary text-primary-foreground rounded-br-sm' 
-                                        : 'bg-card/80 backdrop-blur-sm border border-border/50 text-card-foreground rounded-bl-sm prose prose-zinc dark:prose-invert max-w-none'
-                                }`}>
+                                <div className={`group relative p-4 rounded-2xl text-sm md:text-base leading-relaxed shadow-sm ${msg.role === 'user'
+                                    ? 'bg-primary text-primary-foreground rounded-br-sm'
+                                    : 'bg-card/80 backdrop-blur-sm border border-border/50 text-card-foreground rounded-bl-sm prose prose-zinc dark:prose-invert max-w-none'
+                                    }`}>
                                     {msg.role === 'user' ? (
                                         msg.content
                                     ) : (
@@ -129,7 +129,7 @@ const Chat = () => {
                 {loading && (
                     <div className="flex justify-start">
                         <div className="flex flex-row space-x-3">
-                             <div className="flex-shrink-0 h-8 w-8 rounded-full bg-card border border-border/50 text-foreground flex items-center justify-center mt-auto shadow-sm">
+                            <div className="flex-shrink-0 h-8 w-8 rounded-full bg-card border border-border/50 text-foreground flex items-center justify-center mt-auto shadow-sm">
                                 <Bot className="h-4 w-4" />
                             </div>
                             <div className="bg-card/50 px-5 py-3 rounded-2xl rounded-bl-sm border border-border/50 flex items-center space-x-1.5">
@@ -146,17 +146,17 @@ const Chat = () => {
             {/* Input Area */}
             <div className="p-4 bg-gradient-to-t from-background via-background to-transparent z-20">
                 <form onSubmit={handleSend} className="max-w-3xl mx-auto relative flex items-end gap-2 p-1.5 bg-card/80 backdrop-blur-xl border border-border/50 rounded-3xl shadow-2xl shadow-black/10 transition-all focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/30">
-                    <Input 
-                        value={input} 
-                        onChange={(e) => setInput(e.target.value)} 
-                        placeholder="Message your documents..." 
+                    <Input
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="Message your documents..."
                         className="min-h-[52px] max-h-32 py-3.5 px-5 bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 text-base placeholder:text-muted-foreground/50 resize-none overflow-hidden"
                         disabled={loading}
                     />
-                    <Button 
-                        type="submit" 
-                        size="icon" 
-                        className="h-10 w-10 rounded-2xl mb-1.5 mr-1.5 shadow-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-50" 
+                    <Button
+                        type="submit"
+                        size="icon"
+                        className="h-10 w-10 rounded-2xl mb-1.5 mr-1.5 shadow-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-50"
                         disabled={loading || !input.trim()}
                     >
                         <Send className="h-5 w-5" />
