@@ -23,21 +23,21 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center px-4 py-10">
+        <div className="min-h-screen w-full bg-background flex items-center justify-center px-4 py-10">
             <div className="max-w-5xl w-full grid gap-8 lg:grid-cols-2 items-center">
 
-                {/* Left: white card */}
-                <div className="bg-white rounded-2xl p-10 shadow-lg border border-gray-200">
+                {/* Left: card */}
+                <div className="bg-card rounded-2xl p-10 shadow-lg border border-border">
                     <div className="mb-8">
-                        <p className="text-xs font-semibold tracking-wide text-green-600 mb-1 uppercase">
+                        <p className="text-xs font-semibold tracking-wide text-primary mb-1 uppercase">
                             DocuMind
                         </p>
 
-                        <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+                        <h1 className="text-4xl font-bold tracking-tight text-foreground">
                             Welcome back
                         </h1>
 
-                        <p className="mt-2 text-gray-500">
+                        <p className="mt-2 text-muted-foreground">
                             Sign in to your document intelligence hub.
                         </p>
                     </div>
@@ -57,7 +57,7 @@ const Login = () => {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="h-11 bg-gray-100 border-gray-300 text-gray-900"
+                                className="h-11 bg-secondary/50 border-input text-foreground"
                             />
                         </div>
 
@@ -68,13 +68,13 @@ const Login = () => {
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="h-11 bg-gray-100 border-gray-300 text-gray-900"
+                                className="h-11 bg-secondary/50 border-input text-foreground"
                             />
                         </div>
 
                         <Button
                             type="submit"
-                            className="w-full h-11 text-base bg-green-600 text-white hover:bg-green-700 shadow-md"
+                            className="w-full h-11 text-base shadow-md"
                         >
                             Sign In
                         </Button>
@@ -84,7 +84,7 @@ const Login = () => {
                         <span className="text-gray-500">Don't have an account? </span>
                         <Link
                             to="/signup"
-                            className="font-semibold text-green-600 hover:text-green-700"
+                            className="font-semibold text-primary hover:text-primary/80"
                         >
                             Create account
                         </Link>

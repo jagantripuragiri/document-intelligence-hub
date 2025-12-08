@@ -50,7 +50,7 @@ const Signup = () => {
                                 required
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                className="h-11 bg-secondary/50 border-border focus-visible:ring-primary text-foreground"
+                                className="h-11 bg-secondary/50 border-input focus-visible:ring-primary text-foreground"
                             />
                         </div>
                         <div className="space-y-2">
@@ -61,7 +61,7 @@ const Signup = () => {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="h-11 bg-secondary/50 border-border focus-visible:ring-primary text-foreground"
+                                className="h-11 bg-secondary/50 border-input focus-visible:ring-primary text-foreground"
                             />
                         </div>
                         <div className="space-y-2">
@@ -71,7 +71,7 @@ const Signup = () => {
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="h-11 bg-secondary/50 border-border focus-visible:ring-primary text-foreground"
+                                className="h-11 bg-secondary/50 border-input focus-visible:ring-primary text-foreground"
                             />
                         </div>
                         <Button type="submit" className="w-full h-11 text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all">
