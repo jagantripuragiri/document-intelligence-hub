@@ -58,7 +58,7 @@ router.post('/', protect, async (req, res) => {
         ${context}`;
 
         // 4. Call Gemini
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
         const result = await model.generateContent(systemPrompt);
         const response = await result.response;
         const answer = response.text();
